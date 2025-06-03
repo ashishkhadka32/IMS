@@ -12,7 +12,7 @@
     <nav class="bg-blue-500 p-4">
         <div class="max-w-4xl mx-auto flex justify-between">
             <a href="index.php" class="text-white text-lg font-bold">Inventory Management System</a>
-            <a href="?action=categoryIndex" class="text-white text-lg font-bold">Category</a>
+            <a href="?action=category/index" class="text-white text-lg font-bold">Category</a>
         </div>
     </nav>
     

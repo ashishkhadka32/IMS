@@ -21,7 +21,7 @@ class CategoryController extends Model {
             if (!empty($name)) {
                 $this->category->create(['name' => $name]);
                 $_SESSION['alert'] = ['type' => 'success', 'message' => 'Category created successfully'];
-                header('Location: index.php');
+                header('Location: ?action=category/index');
                 exit;
             } else {
                 $_SESSION['alert'] = ['type' => 'error', 'message' => 'Category name is required'];
@@ -52,7 +52,7 @@ class CategoryController extends Model {
             if (!empty($name)) {
                 if ($this->category->update($id, $name)) {
                     $_SESSION['alert'] = ['type' => 'success', 'message' => 'Category updated successfully'];
-                    header('Location: index.php');
+                    header('Location: ?action=category/index');
                     exit;
                 } else {
                     $_SESSION['alert'] = ['type' => 'error', 'message' => 'Category update failed'];
@@ -66,7 +66,7 @@ class CategoryController extends Model {
                 include './views/categories/edit.php';
             } else {
                 $_SESSION['alert'] = ['type' => 'error', 'message' => 'Category not found'];
-                header('Location: index.php');
+                header('Location: ?action=category/index');
                 exit;
             }
         }
@@ -79,7 +79,7 @@ class CategoryController extends Model {
         } else {
             $_SESSION['alert'] = ['type' => 'error', 'message' => 'Category deletion failed'];
         }
-        header('Location: index.php');
+        header('Location: ?action=category/index');
         exit;
     }
 }

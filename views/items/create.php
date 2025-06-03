@@ -4,7 +4,7 @@ include_once "views/partials/alert.php";
 ?>
 <div class="max-w-lg mx-auto mt-12 p-6 bg-white rounded-lg shadow-md">
     <h4 class="text-3xl font-bold text-gray-800 mb-6">Create Item</h4>
-    <form action="?action=create" method="post" enctype="multipart/form-data" class="space-y-5">
+    <form action="?action=items/create" method="post" enctype="multipart/form-data" class="space-y-5">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1" for="name">Name</label>
             <input type="text" name="name" id="name"

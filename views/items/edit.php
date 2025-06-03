@@ -3,7 +3,7 @@
 
 <div class="max-w-lg mx-auto mt-12 p-6 bg-white rounded-lg shadow-md">
     <h4 class="text-3xl font-bold text-gray-800 mb-6">Edit Item</h4>
-    <form action="?action=update&id=<?php echo htmlspecialchars($item['id']); ?>" method="post" enctype="multipart/form-data" class="space-y-5">
+    <form action="?action=items/update&id=<?php echo htmlspecialchars($item['id']); ?>" method="post" enctype="multipart/form-data" class="space-y-5">
         <div>
             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
             <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($item['name']); ?>"

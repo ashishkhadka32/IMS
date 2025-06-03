@@ -11,30 +11,30 @@ $categoryController = new CategoryController;
 $action = isset($_GET['action']) ? $_GET['action'] : 'index';
 
 switch ($action) {
-    case 'create':
+    case 'items/create':
         $controller->create();
         break;
     case 'index':
         $controller->index();
         break;
-    case 'update':
+    case 'items/update':
         $controller->update();
         break;
-    case 'delete':
+    case 'items/delete':
         $controller->delete();
         break;
 
     //Category.
-    case 'categoryIndex':
+    case 'category/index':
         $categoryController->index();
         break;
-    case 'categoryCreate':
+    case 'category/create':
         $categoryController->categoryCreate();
         break;
-    case 'categoryUpdate':
+    case 'category/update':
         $categoryController->categoryUpdate();
         break;
-    case 'categoryDelete':
+    case 'category/delete':
         $categoryController->categoryDelete();
         break;
     default:

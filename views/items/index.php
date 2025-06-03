@@ -6,7 +6,7 @@ if (isset($_SESSION['alert']) && $_SESSION['alert']['type'] === 'success') {
 ?>
 <div class="max-w-4xl mx-auto mt-8">
     <h4 class="text-xl font-bold mb-4">Inventory Items List</h4>
-    <a href="?action=create" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mb-4 inline-block">Add New Item</a>
+    <a href="?action=items/create" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mb-4 inline-block">Add New Item</a>
 
     <form method="GET" class="mb-4">
     <input type="hidden" name="action" value="index">
@@ -47,8 +47,8 @@ if (isset($_SESSION['alert']) && $_SESSION['alert']['type'] === 'success') {
                         <td class="border border-gray-300 p-2">Rs.&nbsp<?= htmlspecialchars($item['price']); ?></td>
                         <td class="border border-gray-300 p-2"><?= htmlspecialchars($item['category']); ?></td>
                         <td class="border border-gray-300 p-2">
-                            <a href="index.php?action=update&id=<?php echo $item['id']; ?>" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">Edit</a>
-                            <a href="index.php?action=delete&id=<?php echo $item['id']; ?>" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600" onclick="return confirm('Are you sure?')">Delete</a>
+                            <a href="index.php?action=items/update&id=<?php echo $item['id']; ?>" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">Edit</a>
+                            <a href="index.php?action=items/delete&id=<?php echo $item['id']; ?>" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600" onclick="return confirm('Are you sure?')">Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
