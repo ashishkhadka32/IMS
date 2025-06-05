@@ -1,4 +1,5 @@
 <?php
+require_once './core/Model.php';
 class Item extends Model
 {
     private $table = 'items';

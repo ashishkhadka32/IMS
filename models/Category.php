@@ -2,9 +2,9 @@
 class Category extends Model {
     private $table = 'categories';
 
-    public function create($data) {
+    public function create($name) {
         $stmt = $this->db->prepare('INSERT INTO ' . $this->table . ' (name) VALUES (?)');
-        $stmt->bind_param('s', $data['name']);
+        $stmt->bind_param('s', $name);
         $result = $stmt->execute();
         $stmt->close();
         return $result;
@@ -36,5 +36,15 @@ class Category extends Model {
         $result = $stmt->execute();
         $stmt->close();
         return $result;
+    }
+
+       public function getAllCategory() {
+        $query = "SELECT * FROM categories";
+        $result = $this->db->query($query);
+        $categories = [];
+        while ($row = $result->fetch_assoc()) {
+            $categories[] = $row;
+        }
+        return $categories;
     }
 }

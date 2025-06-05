@@ -1,5 +1,5 @@
 <?php
-include_once "views/components/header.php";
+include_once "views/components/nav.php";
 include_once "views/partials/alert.php";
 ?>
 <div class="max-w-4xl mx-auto mt-8">

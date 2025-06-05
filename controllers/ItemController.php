@@ -1,5 +1,5 @@
 <?php
-
+require_once './models/Item.php';
 class itemController
 {
     private $item;
@@ -34,18 +34,20 @@ class itemController
                         $this->item->create($name, $quantity, $price, $category_id, $destfile);
                         $_SESSION['alert'] = ['type' => 'success', 'message' => 'Item created successfully'];
                         header('Location: index.php');
+                        exit;
                     } else {
                         echo "Error uploading file";
                         return;
                     }
                 } else {
                     $_SESSION['alert'] = ['type' => 'error', 'message' => 'Invalid file type. Please upload a JPEG, PNG, or GIF file.'];
-                    header('Location: ?action=create');
+                    header('Location: ?action=items/create');
+                    exit;
                 }
             }
         } else {
-            $categoryController = new CategoryController;
-            $categories = $categoryController->getAllCategory();
+            $category = new Category;
+            $categories = $category->getAllCategory();
 
             include 'views/items/create.php';
         }
@@ -54,8 +56,8 @@ class itemController
 
   public function index()
 {
-    $categoryController = new CategoryController;
-    $categories = $categoryController->getAllCategory();
+    $category = new Category;
+    $categories = $category->getAllCategory();
 
     $categoryId = isset($_GET['category_id']) ? (int)$_GET['category_id'] : null;
 
@@ -110,7 +112,7 @@ class itemController
                     }
                 } else {
                     $_SESSION['alert'] = ['type' => 'error', 'message' => 'Invalid file extension'];
-                    header("Location: ?action=update&id=" . $id);
+                    header("Location: ?action=items/update&id=" . $id);
                     exit;
                 }
             }
@@ -125,8 +127,8 @@ class itemController
         } else {
             $item = $this->item->readOne($id);
 
-            $categoryController = new CategoryController;
-            $categories = $categoryController->getAllCategory();
+            $category = new Category;
+            $categories = $category->getAllCategory();
 
             include 'views/items/edit.php';
         }

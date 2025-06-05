@@ -1,35 +1,36 @@
 <?php
-include_once "views/components/header.php";
+include_once "views/components/nav.php";
 include_once "views/partials/alert.php";
 ?>
 <div class="max-w-lg mx-auto mt-12 p-6 bg-white rounded-lg shadow-md">
     <h4 class="text-3xl font-bold text-gray-800 mb-6">Create Item</h4>
     <form action="?action=items/create" method="post" enctype="multipart/form-data" class="space-y-5">
         <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1" for="name">Name</label>
+            <label class="block text-sm font-medium text-gray-700 mb-1" for="name">Name <span class="text-red-500">*</span></label>
             <input type="text" name="name" id="name"
                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 required>
         </div>
 
         <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1" for="quantity">Quantity</label>
+            <label class="block text-sm font-medium text-gray-700 mb-1" for="quantity">Quantity <span class="text-red-500">*</span></label>
             <input type="number" name="quantity" id="quantity"
                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 required>
         </div>
 
         <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1" for="price">Price</label>
+            <label class="block text-sm font-medium text-gray-700 mb-1" for="price">Price <span class="text-red-500">*</span></label>
             <input type="number" name="price" id="price"
                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 required>
         </div>
 
         <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1" for="category">Category</label>
+            <label class="block text-sm font-medium text-gray-700 mb-1" for="category">Category <span class="text-red-500">*</span></label>
             <select name="category" id="category"
                 class="w-full border border-gray-300 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <option value="">Choose Categories</option>
                 <?php foreach ($categories as $category): ?>
                     <option value="<?php echo $category['id']; ?>">
                         <?php echo $category['name']; ?>
@@ -37,6 +38,7 @@ include_once "views/partials/alert.php";
                 <?php endforeach; ?>
             </select>
         </div>
+
         <div>
             <label class="block text-sm font-medium text-gray-700">Add Image <span class="text-red-500">*</span> </label>
             <input type="file" name="file" class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500" required>

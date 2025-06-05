@@ -4,14 +4,5 @@
         <button onclick="this.parentElement.remove()" class="absolute top-0 right-0 px-2 py-1 text-sm">×</button>
     </div>
 
-    <script>
-        // Hide the alert after 3 seconds
-        setTimeout(function () {
-            const alertBox = document.getElementById('alert-box');
-            if (alertBox) {
-                alertBox.style.opacity = '0';
-                setTimeout(() => alertBox.remove(), 500); // Wait for fade out to finish
-            }
-        }, 3000);
-    </script>
+  
 <?php endif; ?>

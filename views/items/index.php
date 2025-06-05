@@ -1,8 +1,6 @@
-<?php include 'views/components/header.php'; ?>
+<?php include 'views/components/nav.php'; ?>
 <?php
-if (isset($_SESSION['alert']) && $_SESSION['alert']['type'] === 'success') {
-    include 'views/partials/alert.php';
-}
+include 'views/partials/alert.php';
 ?>
 <div class="max-w-4xl mx-auto mt-8">
     <h4 class="text-xl font-bold mb-4">Inventory Items List</h4>

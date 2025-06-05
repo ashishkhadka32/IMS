@@ -1,16 +1,16 @@
 <?php
-require_once './core/Model.php';
 
-class CategoryController extends Model {
+require_once './models/Category.php';
+
+class CategoryController {
     private $category;
 
     public function __construct() {
-        parent::__construct();
         $this->category = new Category();
     }
 
     public function index() {
-        $categories = $this->getAllCategory();
+        $categories = $this->category->getAllCategory();
         include './views/categories/index.php';
     }
 
@@ -30,16 +30,6 @@ class CategoryController extends Model {
             
             include './views/categories/create.php';
         }
-    }
-
-    public function getAllCategory() {
-        $query = "SELECT * FROM categories";
-        $result = $this->db->query($query);
-        $categories = [];
-        while ($row = $result->fetch_assoc()) {
-            $categories[] = $row;
-        }
-        return $categories;
     }
 
     public function categoryUpdate() {
