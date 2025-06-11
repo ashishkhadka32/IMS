@@ -17,6 +17,12 @@ class itemController
             $price = $_POST['price'];
             $category_id = $_POST['category'];
 
+            $_SESSION['old']=[
+                'name'=> $name,
+                'quantity'=> $quantity,
+                'price'=> $price
+            ];
+
             $file = $_FILES['file'];
             $filename = $file['name'];
             $filepath = $file['tmp_name'];
@@ -46,10 +52,11 @@ class itemController
                 }
             }
         } else {
+            //Loads categories for the <select> dropdown.
             $category = new Category;
             $categories = $category->getAllCategory();
 
-            include 'views/items/create.php';
+            include 'views/items/create.php';// Includes the form view so the user can create an item
         }
     }
 
@@ -57,7 +64,7 @@ class itemController
   public function index()
 {
     $category = new Category;
-    $categories = $category->getAllCategory();
+    $categories = $category->getAllCategory();// for category filter dropdown
 
     $categoryId = isset($_GET['category_id']) ? (int)$_GET['category_id'] : null;
 
@@ -67,7 +74,7 @@ class itemController
         $items = $this->item->read();
     }
 
-    include 'views/items/index.php';
+    include 'views/items/index.php';//$categories is passed into the view
 }
 
 

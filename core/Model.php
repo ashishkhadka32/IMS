@@ -1,7 +1,9 @@
 <?php 
+require_once './core/QueryBuilder.php';
 class Model
 {
     protected $db;
+    protected $queryBuilder;
     public function __construct()
     {
         $config = require 'config/db.php';
@@ -10,5 +12,8 @@ class Model
         if ($this->db->connect_error) {
             die("Connection failed: " . $this->db->connect_error);
         }
+
+        $this->queryBuilder = new QueryBuilder($this->db);
+
     }
 }

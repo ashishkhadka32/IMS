@@ -19,7 +19,7 @@ class CategoryController {
             $name = $_POST['name'];
 
             if (!empty($name)) {
-                $this->category->create(['name' => $name]);
+                $this->category->create($name);
                 $_SESSION['alert'] = ['type' => 'success', 'message' => 'Category created successfully'];
                 header('Location: ?action=category/index');
                 exit;

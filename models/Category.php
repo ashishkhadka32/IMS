@@ -1,46 +1,61 @@
 <?php
-class Category extends Model {
+class Category extends Model
+{
     private $table = 'categories';
 
-    public function create($name) {
-        $stmt = $this->db->prepare('INSERT INTO ' . $this->table . ' (name) VALUES (?)');
-        $stmt->bind_param('s', $name);
-        $result = $stmt->execute();
-        $stmt->close();
+
+    public function create($name)
+    {
+        return $this->queryBuilder->table('categories')->create([
+            'name' => $name
+        ]);
+    }
+
+    public function update($id, $name)
+    {
+        return $this->queryBuilder
+            ->table('categories')
+            ->where('id', '=', $id)
+            ->update(['name' => $name]);
+    }
+    public function readOne($id)
+    {
+        $result = $this->queryBuilder->table($this->table)
+            ->where('id', '=', $id)
+            ->limit(1)
+            ->get();
+
+        return $result->fetch_assoc();
+    }
+
+
+
+    public function delete($id)
+    {
+        $result = $this->queryBuilder->table($this->table)
+            ->where("id", "=", $id)
+            ->delete();
         return $result;
     }
 
-    public function readOne($id) {
-        $query = "SELECT * FROM " . $this->table . " WHERE id = ? LIMIT 1";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        $stmt->close();
-        return $row;
-    }
+    //    public function getAllCategory() {
+    //     $query = "SELECT * FROM categories";
+    //     $result = $this->db->query($query);
+    //     $categories = [];
+    //     while ($row = $result->fetch_assoc()) {
+    //         $categories[] = $row;
+    //     }
+    //     return $categories;
+    // }
 
-    public function update($id, $name) {
-        $stmt = $this->db->prepare("UPDATE " . $this->table . " SET name = ? WHERE id = ?");
-        $stmt->bind_param("si", $name, $id);
-        $result = $stmt->execute();
-        $stmt->close();
-        return $result;
-    }
+    public function getAllCategory()
+    {
+        $result = $this->queryBuilder
+            ->table($this->table)
+            ->select(['id', 'name'])
+            ->orderBy('id', 'ASC')
+            ->get();
 
-    public function delete($id) {
-        $query = "DELETE FROM " . $this->table . " WHERE id = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $id);
-        $result = $stmt->execute();
-        $stmt->close();
-        return $result;
-    }
-
-       public function getAllCategory() {
-        $query = "SELECT * FROM categories";
-        $result = $this->db->query($query);
         $categories = [];
         while ($row = $result->fetch_assoc()) {
             $categories[] = $row;
