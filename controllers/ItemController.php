@@ -1,6 +1,10 @@
 <?php
-require_once './models/Item.php';
-class itemController
+namespace App\Controllers;
+
+use App\Models\Category;
+use App\Models\Item;
+
+class ItemController
 {
     private $item;
 

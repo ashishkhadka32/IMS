@@ -1,0 +1,12 @@
+{
+  "name": "dellpc/ims",
+  "description": "MVC IMS Project in core PHP",
+  "autoload": {
+    "psr-4": {
+      "App\\Controllers\\": "controllers/",
+      "App\\Models\\": "models/",
+      "App\\Core\\": "core/"
+    }
+  },
+  "require": {}
+}

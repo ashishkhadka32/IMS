@@ -1,4 +1,8 @@
 <?php
+namespace App\Core;
+
+use Exception;
+
 class QueryBuilder
 {
     protected $db;

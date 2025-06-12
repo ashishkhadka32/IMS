@@ -1,5 +1,9 @@
 <?php 
-require_once './core/QueryBuilder.php';
+namespace App\Core;
+
+use mysqli;
+use App\Core\QueryBuilder;
+
 class Model
 {
     protected $db;

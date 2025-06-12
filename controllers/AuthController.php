@@ -1,5 +1,6 @@
 <?php
-require_once './models/Admin.php';
+namespace App\Controllers;
+use App\Models\Admin;
 
 class AuthController
 {
